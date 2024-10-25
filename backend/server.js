@@ -14,11 +14,17 @@ const server = http.createServer(app);
 
 dotenv.config(); // Load environment variables
 
+// Allowed origins for CORS
+const allowedOrigins = [
+  "http://localhost:5173/",
+  "https://chat-app-akl.netlify.app",
+];
+
 // Socket.IO setup with CORS
 const io = socketio(server, {
   pingTimeout: 60000,
   cors: {
-    origin: "https://chat-app-akl.netlify.app/",
+    origin: allowedOrigins,
     credentials: true,
   },
 });
@@ -30,7 +36,13 @@ app.use(express.urlencoded({ extended: false }));
 // CORS setup for Express
 app.use(
   cors({
-    origin: "https://chat-app-akl.netlify.app/",
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
     credentials: true,
   })
 );
