@@ -18,7 +18,8 @@ dotenv.config();
 const io = socketio(server, {
   pingTimeout: 60000,
   cors: {
-    origin: process.env.FRONTEND_URL || "http://localhost:5173", // Use an env variable for flexibility
+    origin: process.env.FRONTEND_URL || "http://localhost:5173",
+    credentials: true, // Use an env variable for flexibility
   },
 });
 
