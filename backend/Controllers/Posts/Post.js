@@ -1,6 +1,4 @@
 const Post = require("../../Schema/Post");
-const User = require("../../Schema/User");
-const formidable = require("formidable");
 
 const createPost = async (req, res) => {
   const { Text, pic, user } = req.body;
