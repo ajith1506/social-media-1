@@ -5,9 +5,9 @@ const create = async (params, credentials, post) => {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
-        Authorization: credentials.t,
+        Authorization: credentials.true,
       },
-      authorization: credentials.t,
+      authorization: credentials.true,
       body: JSON.stringify(post),
     };
 
@@ -17,9 +17,10 @@ const create = async (params, credentials, post) => {
     );
 
     const Data = await response.json();
+    console.log(Data);
     return Data;
   } catch (err) {
-    console.log(err);
+    return err;
   }
 };
 
@@ -96,7 +97,7 @@ const findPeoplee = async (params, credentials, signal) => {
 const remove = async (params, credentials) => {
   try {
     let response = await fetch(
-      "http://localhost:4000/api/post/" + params.postId,
+      "http://localhost:4000/api/post/add" + params.postId,
       {
         method: "DELETE",
         headers: {
