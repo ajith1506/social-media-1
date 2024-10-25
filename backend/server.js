@@ -40,9 +40,9 @@ require("./config/password")(passport);
 
 // Routes
 app.use("/api/users", users);
-app.use("/api/post/", posts);
-app.use("/api/chat/", chat);
-app.use("/api/message/", message);
+app.use("/api/post", posts);
+app.use("/api/chat", chat);
+app.use("/api/message", message);
 
 io.on("connection", (socket) => {
   console.log("User Connect");
@@ -72,26 +72,22 @@ io.on("connection", (socket) => {
     });
   });
 });
-// --------------------------deployment------------------------------
-
-const __dirname1 = path.resolve();
-
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname1, "/FrontEnd/build")));
-
-  app.get("*", (req, res) =>
-    res.sendFile(path.resolve(__dirname1, "FrontEnd", "build", "index.html"))
-  );
-} else {
-  app.get("/", (req, res) => {
-    res.send("API is running..");
-  });
-}
-
-// --------------------------deployment------------------------------
 
 const PORT = process.env.PORT || 4000;
 
 server.listen(PORT, () => {
   console.log("Server Work in ", PORT);
 });
+// --------------------------deployment------------------------------
+
+const __dirname1 = path.resolve(__dirname); // Ensure this is correct
+console.log("Static files path:", path.join(__dirname1, "/FrontEnd/build"));
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname1, "/frontend/dist")));
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname1, "frontend", "dist", "index.html"));
+  });
+}
+
+// --------------------------deployment------------------------------

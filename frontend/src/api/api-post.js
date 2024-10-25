@@ -12,7 +12,7 @@ const create = async (params, credentials, post) => {
     };
 
     let response = await fetch(
-      "http://localhost:4000/api/post/" + params.userId,
+      "https://chat-app-e316.onrender.com/api/post/" + params.userId,
       requestOptions
     );
 
@@ -37,7 +37,7 @@ const getFeed = async (params, credentials, signal) => {
     };
 
     let response = await fetch(
-      "http://localhost:4000/api/post/feed/" + params.userId,
+      "https://chat-app-e316.onrender.com/api/post/feed/" + params.userId,
       requestOptions
     );
 
@@ -62,7 +62,7 @@ const getFeedUser = async (params, credentials, signal) => {
     };
 
     let response = await fetch(
-      "http://localhost:4000/api/post/feedUser/" + params.userId,
+      "https://chat-app-e316.onrender.com/api/post/feedUser/" + params.userId,
       requestOptions
     );
 
@@ -75,7 +75,8 @@ const getFeedUser = async (params, credentials, signal) => {
 const findPeoplee = async (params, credentials, signal) => {
   try {
     let response = await fetch(
-      "http://localhost:4000/api/users/findpeople/" + params.userId,
+      "https://chat-app-e316.onrender.com/api/users/findpeople/" +
+        params.userId,
       {
         method: "GET",
         headers: {
@@ -94,7 +95,7 @@ const findPeoplee = async (params, credentials, signal) => {
 const remove = async (params, credentials) => {
   try {
     let response = await fetch(
-      "http://localhost:4000/api/post/" + params.postId,
+      "https://chat-app-e316.onrender.com/api/post/" + params.postId,
       {
         method: "DELETE",
         headers: {
@@ -112,15 +113,18 @@ const remove = async (params, credentials) => {
 
 const follow = async (params, credentials, followId) => {
   try {
-    let response = await fetch("http://localhost:4000/api/users/follow/", {
-      method: "PUT",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        Authorization: credentials.t,
-      },
-      body: JSON.stringify({ userId: params.userId, followId: followId }),
-    });
+    let response = await fetch(
+      "https://chat-app-e316.onrender.com/api/users/follow/",
+      {
+        method: "PUT",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization: credentials.t,
+        },
+        body: JSON.stringify({ userId: params.userId, followId: followId }),
+      }
+    );
     return await response.json();
   } catch (err) {
     console.log(err);
@@ -129,15 +133,18 @@ const follow = async (params, credentials, followId) => {
 
 const unfollow = async (params, credentials, unfollowId) => {
   try {
-    let response = await fetch("http://localhost:4000/api/users/unfollow/", {
-      method: "PUT",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        Authorization: credentials.t,
-      },
-      body: JSON.stringify({ userId: params.userId, unfollowId: unfollowId }),
-    });
+    let response = await fetch(
+      "https://chat-app-e316.onrender.com/api/users/unfollow/",
+      {
+        method: "PUT",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization: credentials.t,
+        },
+        body: JSON.stringify({ userId: params.userId, unfollowId: unfollowId }),
+      }
+    );
     return await response.json();
   } catch (err) {
     console.log(err);
@@ -146,15 +153,18 @@ const unfollow = async (params, credentials, unfollowId) => {
 
 const Like = async (params, credentials, postId) => {
   try {
-    let response = await fetch("http://localhost:4000/api/post/like", {
-      method: "PUT",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        Authorization: credentials.t,
-      },
-      body: JSON.stringify({ userId: params.userId, postId: postId }),
-    });
+    let response = await fetch(
+      "https://chat-app-e316.onrender.com/api/post/like",
+      {
+        method: "PUT",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization: credentials.t,
+        },
+        body: JSON.stringify({ userId: params.userId, postId: postId }),
+      }
+    );
     return await response.json();
   } catch (error) {
     console.log(error);
@@ -163,15 +173,18 @@ const Like = async (params, credentials, postId) => {
 
 const unlike = async (params, credentials, postId) => {
   try {
-    let response = await fetch("http://localhost:4000/api/post/unlike", {
-      method: "PUT",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        Authorization: credentials.t,
-      },
-      body: JSON.stringify({ userId: params.userId, postId: postId }),
-    });
+    let response = await fetch(
+      "https://chat-app-e316.onrender.com/api/post/unlike",
+      {
+        method: "PUT",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization: credentials.t,
+        },
+        body: JSON.stringify({ userId: params.userId, postId: postId }),
+      }
+    );
     return await response.json();
   } catch (error) {
     console.log(error);
@@ -180,19 +193,22 @@ const unlike = async (params, credentials, postId) => {
 
 const comment = async (params, credentials, postId, comment) => {
   try {
-    let response = await fetch("http://localhost:4000/api/post/comment/", {
-      method: "PUT",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        Authorization: credentials.t,
-      },
-      body: JSON.stringify({
-        userId: params.userId,
-        postId: postId,
-        comment: comment,
-      }),
-    });
+    let response = await fetch(
+      "https://chat-app-e316.onrender.com/api/post/comment/",
+      {
+        method: "PUT",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization: credentials.t,
+        },
+        body: JSON.stringify({
+          userId: params.userId,
+          postId: postId,
+          comment: comment,
+        }),
+      }
+    );
     return await response.json();
   } catch (err) {
     console.log(err);
@@ -202,7 +218,7 @@ const comment = async (params, credentials, postId, comment) => {
 const read = async (params, credentials, signal) => {
   try {
     let response = await fetch(
-      "http://localhost:4000/api/users/" + params.userId,
+      "https://chat-app-e316.onrender.com/api/users/" + params.userId,
       {
         method: "GET",
         headers: {
@@ -228,7 +244,7 @@ const update = async (params, credentials, Values) => {
   let v = { name: "FFF" };
   try {
     let response = await fetch(
-      "http://localhost:4000/api/users/update/" + params.userId,
+      "https://chat-app-e316.onrender.com/api/users/update/" + params.userId,
       {
         method: "PUT",
         headers: {
@@ -245,19 +261,22 @@ const update = async (params, credentials, Values) => {
 };
 const uncomment = async (params, credentials, postId, comment) => {
   try {
-    let response = await fetch("http://localhost:4000/api/post/uncomment/", {
-      method: "PUT",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        Authorization: credentials.t,
-      },
-      body: JSON.stringify({
-        userId: params.userId,
-        postId: postId,
-        comment: comment,
-      }),
-    });
+    let response = await fetch(
+      "https://chat-app-e316.onrender.com/api/post/uncomment/",
+      {
+        method: "PUT",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization: credentials.t,
+        },
+        body: JSON.stringify({
+          userId: params.userId,
+          postId: postId,
+          comment: comment,
+        }),
+      }
+    );
     return await response.json();
   } catch (err) {
     console.log(err);
@@ -267,7 +286,7 @@ const uncomment = async (params, credentials, postId, comment) => {
 const searchuser = async (params, credentials, se) => {
   try {
     let response = await fetch(
-      `http://localhost:4000/api/users/?search=${se.search}`,
+      `https://chat-app-e316.onrender.com/api/users/?search=${se.search}`,
       {
         method: "GET",
         headers: {
@@ -285,7 +304,7 @@ const searchuser = async (params, credentials, se) => {
 
 const getChat = async (params, credentials, se) => {
   try {
-    let response = await fetch(`http://localhost:4000/api/chat/`, {
+    let response = await fetch(`https://chat-app-e316.onrender.com/api/chat/`, {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -302,14 +321,17 @@ const getChat = async (params, credentials, se) => {
 
 const getMessage = async (params, credentials, se) => {
   try {
-    let response = await fetch(`http://localhost:4000/api/message/${se}`, {
-      method: "Get",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        Authorization: credentials.t,
-      },
-    });
+    let response = await fetch(
+      `https://chat-app-e316.onrender.com/api/message/${se}`,
+      {
+        method: "Get",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization: credentials.t,
+        },
+      }
+    );
     return await response.json();
   } catch (err) {
     console.log(err);
@@ -318,15 +340,18 @@ const getMessage = async (params, credentials, se) => {
 
 const setMessage = async (params, credentials, se) => {
   try {
-    let response = await fetch(`http://localhost:4000/api/message/`, {
-      method: "Post",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        Authorization: credentials.t,
-      },
-      body: JSON.stringify(params),
-    });
+    let response = await fetch(
+      `https://chat-app-e316.onrender.com/api/message/`,
+      {
+        method: "Post",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization: credentials.t,
+        },
+        body: JSON.stringify(params),
+      }
+    );
     return await response.json();
   } catch (err) {
     console.log(err);
@@ -335,7 +360,7 @@ const setMessage = async (params, credentials, se) => {
 
 const fetchChats = async (params, credentials, se) => {
   try {
-    let response = await fetch(`http://localhost:4000/api/chat/`, {
+    let response = await fetch(`https://chat-app-e316.onrender.com/api/chat/`, {
       method: "Get",
       headers: {
         Accept: "application/json",

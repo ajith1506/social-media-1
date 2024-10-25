@@ -48,7 +48,7 @@ const Register = ({ history }) => {
     };
 
     const response = await fetch(
-      "http://localhost:4000/api/users/register",
+      "https://chat-app-e316.onrender.com/api/users/register",
       requestOptions
     );
     const Data = await response.json();

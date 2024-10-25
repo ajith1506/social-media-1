@@ -1,6 +1,6 @@
-const Message = require("../../Schema/Message");
-const Chat = require('../../Schema/Chat')
-const User = require('../../Schema/User')
+const Message = require("../../Schema/message");
+const Chat = require("../../Schema/Chat");
+const User = require("../../Schema/User");
 
 const sendMessage = async (req, res) => {
   const { content, chatId } = req.body;
@@ -35,6 +35,4 @@ const sendMessage = async (req, res) => {
   }
 };
 
-module.exports = sendMessage ;
-
-
+module.exports = sendMessage;
