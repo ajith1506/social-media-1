@@ -7,35 +7,28 @@ const posts = require("./Routes/api/posts");
 const message = require("./Routes/api/message");
 const dotenv = require("dotenv");
 const cors = require("cors");
-const bodyParser = require("body-parser");
 const passport = require("passport");
 const http = require("http");
 const socketio = require("socket.io");
 const server = http.createServer(app);
-const path = require("path");
+
 dotenv.config();
 
-const io = require("socket.io")(server, {
+// Socket.IO setup
+const io = socketio(server, {
   pingTimeout: 60000,
   cors: {
-    origin: "http://localhost:5173",
-    // credentials: true,
+    origin: process.env.FRONTEND_URL || "http://localhost:5173", // Use an env variable for flexibility
   },
 });
 
-// Bodyparser middleware
-app.use(
-  bodyParser.urlencoded({
-    extended: false,
-  })
-);
-
-app.use(bodyParser.json());
-
+// Middleware
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 app.use(cors({ origin: true }));
+
 // Passport middleware
 app.use(passport.initialize());
-// Passport config
 require("./config/password")(passport);
 
 // Routes
@@ -44,50 +37,39 @@ app.use("/api/post", posts);
 app.use("/api/chat", chat);
 app.use("/api/message", message);
 
+// Socket.IO events
 io.on("connection", (socket) => {
-  console.log("User Connect");
+  console.log("User Connected");
 
   socket.on("setup", (userData) => {
     socket.join(userData.id);
-    console.log(userData.id);
+    console.log("User setup:", userData.id);
     socket.emit("connected");
   });
 
   socket.on("join chat", (room) => {
     socket.join(room);
-    console.log("User Join to ROOM :  " + room);
+    console.log("User joined room:", room);
   });
 
   socket.on("typing", (room) => socket.in(room).emit("typing"));
   socket.on("stop typing", (room) => socket.in(room).emit("stop typing"));
-  socket.on("new message", (newMessageRecieved) => {
-    var chat = newMessageRecieved.chat;
+  socket.on("new message", (newMessageReceived) => {
+    const chat = newMessageReceived.chat;
 
     if (!chat.users) return console.log("chat.users not defined");
 
     chat.users.forEach((user) => {
-      if (user._id == newMessageRecieved.sender._id) return;
+      if (user._id === newMessageReceived.sender._id) return;
 
-      socket.in(user._id).emit("message recieved", newMessageRecieved);
+      socket.in(user._id).emit("message received", newMessageReceived);
     });
   });
 });
 
+// Server
 const PORT = process.env.PORT || 4000;
 
 server.listen(PORT, () => {
-  console.log("Server Work in ", PORT);
+  console.log(`Server is running on port ${PORT}`);
 });
-// --------------------------deployment------------------------------
-
-const __dirname1 = path.resolve(__dirname); // Ensure this is correct
-console.log("Static files path:", path.join(__dirname1, "/FrontEnd/build"));
-
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname1, "/frontend/dist")));
-  app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname1, "frontend", "dist", "index.html"));
-  });
-}
-
-// --------------------------deployment------------------------------
