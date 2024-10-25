@@ -1,11 +1,12 @@
 const Post = require("../../Schema/Post");
 const User = require("../../Schema/User");
+const formidable = require("formidable");
 
 const createPost = async (req, res) => {
-  const { text, pic, user } = req.body;
+  const { Text, pic, user } = req.body;
 
-  const NewPost = new Post({
-    caption: text,
+  const NewPost = await Post.create({
+    caption: Text,
     photo: pic,
     author: user.id,
     userDetails: { name: user.name, id: user.id },
@@ -16,8 +17,7 @@ const createPost = async (req, res) => {
     res.json(result);
   } catch (err) {
     return res.status(400).json({
-      error: "Error creating post",
-      details: err,
+      err,
     });
   }
 };

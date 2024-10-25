@@ -1,4 +1,3 @@
-// Schema definition
 const mongoose = require("mongoose");
 
 const PostSchema = new mongoose.Schema(
@@ -22,7 +21,7 @@ const PostSchema = new mongoose.Schema(
     },
     author: {
       type: mongoose.Types.ObjectId,
-      ref: "User", // Match ref name with the User model
+      ref: "users",
     },
     userDetails: {
       name: {
@@ -42,7 +41,7 @@ const PostSchema = new mongoose.Schema(
       {
         commentedBy: {
           type: mongoose.Types.ObjectId,
-          ref: "User", // Match ref name with the User model
+          ref: "users",
         },
         text: {
           type: String,
@@ -50,7 +49,7 @@ const PostSchema = new mongoose.Schema(
         },
         commentedAt: {
           type: Date,
-          default: Date.now,
+          default: new Date(),
           required: true,
         },
         like: {
