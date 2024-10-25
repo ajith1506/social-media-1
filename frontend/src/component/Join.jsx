@@ -173,7 +173,7 @@ const Join = () => {
   }, [chat]);
 
   useEffect(() => {
-    socket = io("http://localhost:4000/");
+    socket = io("https://social-media-1-1.onrender.com/");
     socket.emit("setup", user1);
     socket.on("connected", () => Setsocketc(true));
     socket.on("typing", () => setIsTyping(true));
