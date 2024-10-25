@@ -12,7 +12,7 @@ const list1 = require("../../Controllers/users/listUser");
 const uncomment = require("../../Controllers/Posts/uncomment");
 const remove = require("../../Controllers/Posts/remove");
 
-router.route("/:userId").post(auth, createPost);
+router.route("/:userId").post(createPost);
 router.route("/feed/:userId").get(list);
 router.route("/feeduser/:userId").get(list1);
 

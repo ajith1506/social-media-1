@@ -11,7 +11,7 @@ const create = async (params, credentials, post) => {
     };
 
     let response = await fetch(
-      `http://localhost:4000/api/post/${params.userId}`,
+      `https://social-media-1-1.onrender.com/api/post/${params.userId}`,
       requestOptions
     );
 
