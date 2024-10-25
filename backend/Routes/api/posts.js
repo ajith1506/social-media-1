@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { createPost } = require("../../Controllers/Posts/Post");
+const createPost = require("../../Controllers/Posts/Post");
 const auth = require("../../middleware/auth");
 const list = require("../../Controllers/Posts/listNewsFeed");
 const postById = require("../../Controllers/Posts/postById");
