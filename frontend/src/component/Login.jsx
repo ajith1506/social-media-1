@@ -33,7 +33,7 @@ const Login = ({ history }) => {
     };
     try {
       const response = await fetch(
-        "https://chat-app-e316.onrender.com/api/users/login",
+        "https://social-media-1-1.onrender.com/api/users/login",
         requestOptions
       );
       const Data = await response.json();
