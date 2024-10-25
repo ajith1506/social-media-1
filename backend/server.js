@@ -18,7 +18,7 @@ dotenv.config(); // Load environment variables
 const io = socketio(server, {
   pingTimeout: 60000,
   cors: {
-    origin: process.env.FRONTEND_URL || "http://localhost:5173",
+    origin: process.env.FRONTEND_URL || "https://chat-app-ak.netlify.app",
     credentials: true,
   },
 });
@@ -30,7 +30,7 @@ app.use(express.urlencoded({ extended: false }));
 // CORS setup for Express
 app.use(
   cors({
-    origin: process.env.FRONTEND_URL || "http://localhost:5173",
+    origin: process.env.FRONTEND_URL || "https://chat-app-ak.netlify.app",
     credentials: true,
   })
 );

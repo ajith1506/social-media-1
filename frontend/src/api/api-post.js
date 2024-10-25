@@ -11,7 +11,7 @@ const create = async (params, credentials, post) => {
     };
 
     let response = await fetch(
-      `https://social-media-1-1.onrender.com/api/post/${params.userId}`,
+      `https://social-media-1-2.onrender.com/api/post/${params.userId}`,
       requestOptions
     );
 
@@ -36,7 +36,7 @@ const getFeed = async (params, credentials, signal) => {
     };
 
     let response = await fetch(
-      "https://social-media-1-1.onrender.com/api/post/feed/" + params.userId,
+      "https://social-media-1-2.onrender.com/api/post/feed/" + params.userId,
       requestOptions
     );
 
@@ -61,7 +61,7 @@ const getFeedUser = async (params, credentials, signal) => {
     };
 
     let response = await fetch(
-      "https://social-media-1-1.onrender.com/api/post/feedUser/" +
+      "https://social-media-1-2.onrender.com/api/post/feedUser/" +
         params.userId,
       requestOptions
     );
@@ -75,7 +75,7 @@ const getFeedUser = async (params, credentials, signal) => {
 const findPeoplee = async (params, credentials, signal) => {
   try {
     let response = await fetch(
-      "https://social-media-1-1.onrender.com/api/users/findpeople/" +
+      "https://social-media-1-2.onrender.com/api/users/findpeople/" +
         params.userId,
       {
         method: "GET",
@@ -95,7 +95,7 @@ const findPeoplee = async (params, credentials, signal) => {
 const remove = async (params, credentials) => {
   try {
     let response = await fetch(
-      "https://social-media-1-1.onrender.com/api/post/" + params.postId,
+      "https://social-media-1-2.onrender.com/api/post/" + params.postId,
       {
         method: "DELETE",
         headers: {
@@ -116,7 +116,7 @@ const follow = async (params, credentials, followId) => {
 
   try {
     let response = await fetch(
-      "https://social-media-1-1.onrender.com/api/users/follow/",
+      "https://social-media-1-2.onrender.com/api/users/follow/",
       {
         method: "PUT",
         headers: {
@@ -138,7 +138,7 @@ const unfollow = async (params, credentials, unfollowId) => {
 
   try {
     let response = await fetch(
-      "https://social-media-1-1.onrender.com/api/users/unfollow/",
+      "https://social-media-1-2.onrender.com/api/users/unfollow/",
       {
         method: "PUT",
         headers: {
@@ -158,7 +158,7 @@ const unfollow = async (params, credentials, unfollowId) => {
 const Like = async (params, credentials, postId) => {
   try {
     let response = await fetch(
-      "https://social-media-1-1.onrender.com/api/post/like",
+      "https://social-media-1-2.onrender.com/api/post/like",
       {
         method: "PUT",
         headers: {
@@ -178,7 +178,7 @@ const Like = async (params, credentials, postId) => {
 const unlike = async (params, credentials, postId) => {
   try {
     let response = await fetch(
-      "https://social-media-1-1.onrender.com/api/post/unlike",
+      "https://social-media-1-2.onrender.com/api/post/unlike",
       {
         method: "PUT",
         headers: {
@@ -198,7 +198,7 @@ const unlike = async (params, credentials, postId) => {
 const comment = async (params, credentials, postId, comment) => {
   try {
     let response = await fetch(
-      "https://social-media-1-1.onrender.com/api/post/comment/",
+      "https://social-media-1-2.onrender.com/api/post/comment/",
       {
         method: "PUT",
         headers: {
@@ -222,7 +222,7 @@ const comment = async (params, credentials, postId, comment) => {
 const read = async (params, credentials, signal) => {
   try {
     let response = await fetch(
-      "https://social-media-1-1.onrender.com/api/users/" + params.userId,
+      "https://social-media-1-2.onrender.com/api/users/" + params.userId,
       {
         method: "GET",
         headers: {
@@ -248,7 +248,7 @@ const update = async (params, credentials, Values) => {
   let v = { name: "FFF" };
   try {
     let response = await fetch(
-      "https://social-media-1-1.onrender.com/api/users/update/" + params.userId,
+      "https://social-media-1-2.onrender.com/api/users/update/" + params.userId,
       {
         method: "PUT",
         headers: {
@@ -268,7 +268,7 @@ const uncomment = async (params, credentials, postId, comment) => {
 
   try {
     let response = await fetch(
-      "https://social-media-1-1.onrender.com/api/post/uncomment/",
+      "https://social-media-1-2.onrender.com/api/post/uncomment/",
       {
         method: "PUT",
         headers: {
@@ -293,7 +293,7 @@ const searchuser = async (params, credentials, se) => {
   console.log(se);
   try {
     let response = await fetch(
-      `https://social-media-1-1.onrender.com/api/users/?search=${se.search}`,
+      `https://social-media-1-2.onrender.com/api/users/?search=${se.search}`,
       {
         method: "GET",
         headers: {
@@ -312,7 +312,7 @@ const searchuser = async (params, credentials, se) => {
 const getChat = async (params, credentials, se) => {
   try {
     let response = await fetch(
-      `https://social-media-1-1.onrender.com/api/chat/`,
+      `https://social-media-1-2.onrender.com/api/chat/`,
       {
         method: "POST",
         headers: {
@@ -333,7 +333,7 @@ const getMessage = async (params, credentials, se) => {
   console.log(se);
   try {
     let response = await fetch(
-      `https://social-media-1-1.onrender.com/api/message/${se}`,
+      `https://social-media-1-2.onrender.com/api/message/${se}`,
       {
         method: "Get",
         headers: {
@@ -353,7 +353,7 @@ const setMessage = async (params, credentials, se) => {
   console.log(params);
   try {
     let response = await fetch(
-      `https://social-media-1-1.onrender.com/api/message/`,
+      `https://social-media-1-2.onrender.com/api/message/`,
       {
         method: "Post",
         headers: {
@@ -373,7 +373,7 @@ const setMessage = async (params, credentials, se) => {
 const fetchChats = async (params, credentials, se) => {
   try {
     let response = await fetch(
-      `https://social-media-1-1.onrender.com/api/chat/`,
+      `https://social-media-1-2.onrender.com/api/chat/`,
       {
         method: "Get",
         headers: {
