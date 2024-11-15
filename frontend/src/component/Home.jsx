@@ -14,11 +14,11 @@ const Home = () => {
 
   return (
     <div>
-      <div className="jumbotron centered align-items-center">
-        <div className="container">
-          <h1 className="display-3 mt-3 mb-3">Piqosocial</h1>
+      <div className="jumbotron centered align-items-center ">
+        <div className="container align-items-center">
+          <h1 className="display-3 mt-3 mb-3">AJITH CHAT APP</h1>
           <a
-            className="btn btn-light btn-lg mr-2"
+            className="btn btn-light btn-lg mr-2 "
             href="/register"
             role="button"
           >
