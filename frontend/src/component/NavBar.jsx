@@ -72,7 +72,7 @@ const NavBar = () => {
               }}
               className="logo fs-3 fw-bold"
             >
-              Piqosocial
+              Ak
             </h1>
           </a>
           <div className="mr-5 position-relative d-flex">
